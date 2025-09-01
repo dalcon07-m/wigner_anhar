@@ -111,12 +111,19 @@ for vib_folder in vibs:
     y_fit = a0 + a1*x_fit + a2*x_fit**2 + a3*x_fit**3 + a4*x_fit**4
     ax.plot(x_fit, y_fit, '-', label='Fit')
 
+    
+    # Calculate R²
+    y_model = a0 + a1*x + a2*x**2 + a3*x**3 + a4*x**4  # values at original x
+    ss_res = np.sum((y - y_model)**2)
+    ss_tot = np.sum((y - np.mean(y))**2)
+    r2 = 1 - (ss_res / ss_tot)
+    
     ax.set_xlabel("Displacement (Angstrom)")
     ax.set_ylabel("Energy (A.U)")
     ax.set_title(vib_folder)
 
     # Show fit coefficients and reduced mass in the plot
-    txt = f"k={k:.3f}\nkc={kc:.3f}\nkq={kq:.3f}"
+    txt = f"k={k:.3f}\nkc={kc:.3f}\nkq={kq:.3f}\nR²={r2:.4f}"
     if red_mass is not None:
         txt += f"\nμ={red_mass:.3f} amu"
     ax.text(0.02, 0.95, txt,

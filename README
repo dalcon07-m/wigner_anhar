@@ -33,6 +33,6 @@ Execution Steps
    Run wigner.py. Using the fitted potentials, this script calculates:
    - Ground state wavefunctions (via finite differences)
    - Wigner functions at P=0
-   - Gaussian fits of the Wigner functions (W(x) = exp(-(x-a)^2 / (2*sigma^2)))
+   - Gaussian fits of the Wigner functions (W(x) =A*exp(-(x-a)^2 / (2*sigma^2)))
    - Output files: wigner_gaussian.dat (Gaussian fit parameters) and wave_wigner.pdf (plots)
 
